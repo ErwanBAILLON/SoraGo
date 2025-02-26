@@ -67,7 +67,7 @@ const ContactForm: React.FC = () => {
       {/* Success Message */}
       {submitStatus === 'success' && (
         <div className="p-4 bg-green-50 border border-green-200 text-green-700 rounded-md">
-          Thank you for your message! We'll get back to you shortly.
+          Thank you for your message! We$apos;ll get back to you shortly.
         </div>
       )}
       

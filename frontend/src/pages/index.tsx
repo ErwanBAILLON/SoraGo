@@ -30,7 +30,7 @@ const Home: NextPage = () => {
             </h2>
             <p className="text-center text-gray-700 text-lg leading-relaxed">
               SoraGo provides flexible car subscriptions for the modern world. We offer a range of plans 
-              tailored to your mobility needs, whether you're a city dweller who needs occasional access 
+              tailored to your mobility needs, whether you&apos;re a city dweller who needs occasional access 
               to a car or a frequent traveler requiring reliable transportation. Our service eliminates 
               the hassle of car ownership while giving you all the freedom.
             </p>

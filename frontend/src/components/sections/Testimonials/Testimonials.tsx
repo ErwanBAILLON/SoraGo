@@ -4,7 +4,7 @@ import { TestimonialProps } from './types';
 const Testimonial: React.FC<TestimonialProps> = ({ text, name, title }) => {
   return (
     <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all">
-      <div className="text-primary mb-4 text-3xl">"</div>
+      <div className="text-primary mb-4 text-3xl">&quot;</div>
       <p className="italic text-gray-700 mb-6">{text}</p>
       <div className="flex items-center">
         <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3">
