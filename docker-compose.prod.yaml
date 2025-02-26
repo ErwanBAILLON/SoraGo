@@ -1,6 +1,7 @@
 services:
   frontend:
     container_name: SoraGo-frontend-prod
+    restart: unless-stopped
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -12,6 +13,7 @@ services:
 
   backend:
     container_name: SoraGo-backend-prod
+    restart: unless-stopped
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -31,6 +33,7 @@ services:
 
   postgres:
     container_name: SoraGo-postgres-prod
+    restart: unless-stopped
     image: postgres:17
     ports:
       - '${POSTGRES_PORT}:5432'
@@ -49,6 +52,7 @@ services:
 
   pgadmin:
     container_name: SoraGo-pgadmin-prod
+    restart: unless-stopped
     image: dpage/pgadmin4
     ports:
       - '${PGADMIN_PORT}:80'
@@ -60,6 +64,7 @@ services:
 
   prometheus:
     image: prom/prometheus
+    restart: unless-stopped
     container_name: SoraGo-prometheus
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
@@ -71,6 +76,7 @@ services:
 
   grafana:
     image: grafana/grafana
+    restart: unless-stopped
     container_name: SoraGo-grafana
     ports:
       - '${GRAFANA_PORT}:3000'
