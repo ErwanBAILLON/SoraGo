@@ -98,28 +98,31 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-indigo-100">
-      <div className="absolute top-0 right-0 w-2/3 h-64 bg-indigo-600 rounded-bl-full opacity-10 transform translate-y-12"></div>
+      <div className="absolute top-0 right-0 w-2/3 h-64 bg-sora-blue rounded-bl-full opacity-10 transform translate-y-12"></div>
       
       <div className="z-10 w-full max-w-4xl p-8 flex rounded-2xl shadow-2xl bg-white overflow-hidden">
         {/* Formulaire d'inscription */}
         <div className="w-full md:w-3/5 p-5">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Créer un compte</h1>
-            <p className="text-gray-600">Rejoignez SoraGo pour accéder à nos services de location</p>
+            <h1 className="text-3xl font-bold text-sora-gray mb-2">Créer un compte</h1>
+            <p className="text-gray-500">Rejoignez SoraGo pour accéder à nos services de location</p>
           </div>
           
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div className="flex flex-col md:flex-row gap-4">
               <div className="relative flex-1">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <FiUser className="h-5 w-5 text-gray-400" />
+                  <FiUser className="h-5 w-5 text-sora-blue/70" />
                 </div>
                 <input
                   id="username"
                   name="username"
                   type="text"
                   required
-                  className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 transition-all duration-200"
+                  className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-lg 
+                             bg-white text-sora-gray placeholder-gray-400
+                             focus:outline-none focus:ring-2 focus:ring-sora-blue/50 focus:border-sora-blue
+                             transition-all duration-200"
                   placeholder="Prénom"
                   value={formData.username}
                   onChange={handleChange}
@@ -129,14 +132,17 @@ const Register = () => {
               
               <div className="relative flex-1">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <FiUser className="h-5 w-5 text-gray-400" />
+                  <FiUser className="h-5 w-5 text-sora-blue/70" />
                 </div>
                 <input
                   id="lastname"
                   name="lastname"
                   type="text"
                   required
-                  className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 transition-all duration-200"
+                  className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-lg 
+                             bg-white text-sora-gray placeholder-gray-400
+                             focus:outline-none focus:ring-2 focus:ring-sora-blue/50 focus:border-sora-blue
+                             transition-all duration-200"
                   placeholder="Nom"
                   value={formData.lastname}
                   onChange={handleChange}
@@ -147,7 +153,7 @@ const Register = () => {
 
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FiMail className="h-5 w-5 text-gray-400" />
+                <FiMail className="h-5 w-5 text-sora-blue/70" />
               </div>
               <input
                 id="email"
@@ -155,7 +161,10 @@ const Register = () => {
                 type="email"
                 autoComplete="email"
                 required
-                className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 transition-all duration-200"
+                className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-lg 
+                           bg-white text-sora-gray placeholder-gray-400
+                           focus:outline-none focus:ring-2 focus:ring-sora-blue/50 focus:border-sora-blue
+                           transition-all duration-200"
                 placeholder="Adresse email"
                 value={formData.email}
                 onChange={handleChange}
@@ -165,13 +174,16 @@ const Register = () => {
 
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FiPhone className="h-5 w-5 text-gray-400" />
+                <FiPhone className="h-5 w-5 text-sora-blue/70" />
               </div>
               <input
                 id="phone"
                 name="phone"
                 type="tel"
-                className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 transition-all duration-200"
+                className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-lg 
+                           bg-white text-sora-gray placeholder-gray-400
+                           focus:outline-none focus:ring-2 focus:ring-sora-blue/50 focus:border-sora-blue
+                           transition-all duration-200"
                 placeholder="Téléphone (optionnel)"
                 value={formData.phone}
                 onChange={handleChange}
@@ -181,14 +193,17 @@ const Register = () => {
 
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FiLock className="h-5 w-5 text-gray-400" />
+                <FiLock className="h-5 w-5 text-sora-blue/70" />
               </div>
               <input
                 id="password"
                 name="password"
                 type="password"
                 required
-                className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 transition-all duration-200"
+                className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-lg 
+                           bg-white text-sora-gray placeholder-gray-400
+                           focus:outline-none focus:ring-2 focus:ring-sora-blue/50 focus:border-sora-blue
+                           transition-all duration-200"
                 placeholder="Mot de passe"
                 value={formData.password}
                 onChange={handleChange}
@@ -209,14 +224,17 @@ const Register = () => {
 
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FiLock className="h-5 w-5 text-gray-400" />
+                <FiLock className="h-5 w-5 text-sora-blue/70" />
               </div>
               <input
                 id="confirmPassword"
                 name="confirmPassword"
                 type="password"
                 required
-                className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 transition-all duration-200"
+                className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-lg 
+                           bg-white text-sora-gray placeholder-gray-400
+                           focus:outline-none focus:ring-2 focus:ring-sora-blue/50 focus:border-sora-blue
+                           transition-all duration-200"
                 placeholder="Confirmer le mot de passe"
                 value={formData.confirmPassword}
                 onChange={handleChange}
@@ -229,7 +247,7 @@ const Register = () => {
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
                     <svg className="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 001.414-1.414L11.414 10l1.293-1.293a1 1 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 101.414 1.414L10 11.414l1.293 1.293a1 1 001.414-1.414L11.414 10l1.293-1.293a1 1 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                     </svg>
                   </div>
                   <div className="ml-3">
@@ -239,14 +257,44 @@ const Register = () => {
               </div>
             )}
 
+            {/* Ajout d'une option de consentement des termes et conditions */}
+            <div className="mt-4">
+              <div className="flex items-start">
+                <div className="flex items-center h-5">
+                  <input
+                    id="terms"
+                    name="terms"
+                    type="checkbox"
+                    required
+                    className="w-4 h-4 appearance-none border border-gray-300 rounded 
+                              checked:bg-sora-blue checked:border-transparent
+                              focus:outline-none focus:ring-2 focus:ring-sora-blue/50
+                              cursor-pointer"
+                    style={{
+                      backgroundImage: 'url("data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27white%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e")',
+                      backgroundSize: '100% 100%',
+                      backgroundPosition: 'center',
+                      backgroundRepeat: 'no-repeat'
+                    }}
+                  />
+                </div>
+                <label htmlFor="terms" className="ml-3 block text-sm text-gray-600 cursor-pointer">
+                  J&apos;accepte les <a href="/terms" className="text-sora-blue hover:underline">termes et conditions</a> et la <a href="/privacy" className="text-sora-blue hover:underline">politique de confidentialité</a>
+                </label>
+              </div>
+            </div>
+
             <div className="mt-4">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 shadow-lg hover:shadow-xl"
+                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium 
+                           rounded-lg text-white bg-sora-blue hover:bg-sora-blue/90 
+                           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sora-blue 
+                           transition-all duration-200 shadow-lg hover:shadow-xl"
               >
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                  <FiUserPlus className="h-5 w-5 text-indigo-300 group-hover:text-indigo-200" aria-hidden="true" />
+                  <FiUserPlus className="h-5 w-5 opacity-80 group-hover:opacity-100" aria-hidden="true" />
                 </span>
                 {isSubmitting ? (
                   <div className="flex items-center">
@@ -261,9 +309,9 @@ const Register = () => {
             </div>
 
             <div className="mt-4 text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-500">
                 Déjà inscrit ?{' '}
-                <Link href="/auth/login" className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-200">
+                <Link href="/auth/login" className="font-medium text-sora-blue hover:text-sora-blue/80 transition-colors duration-200">
                   Se connecter
                 </Link>
               </p>
@@ -272,7 +320,7 @@ const Register = () => {
         </div>
         
         {/* Côté illustration */}
-        <div className="hidden md:block w-2/5 bg-indigo-600 rounded-r-2xl p-8 text-white relative">
+        <div className="hidden md:block w-2/5 bg-sora-blue rounded-r-2xl p-8 text-white relative">
           <div className="absolute inset-0 opacity-20">
             <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
               <path fill="currentColor" d="M0,0 L100,0 L100,100 L0,100z" />

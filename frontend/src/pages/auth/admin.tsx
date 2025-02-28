@@ -65,7 +65,7 @@ const AdminLoginPage: NextPage = () => {
       {/* Header */}
       <div className="w-full bg-white shadow-sm p-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/auth/login" className="flex items-center text-gray-700 hover:text-indigo-600 transition-colors">
+          <Link href="/auth/login" className="flex items-center text-gray-700 hover:text-sora-blue transition-colors">
             <FiArrowLeft className="mr-2" />
             <span>Retour à la connexion client</span>
           </Link>
@@ -76,8 +76,8 @@ const AdminLoginPage: NextPage = () => {
       <div className="flex flex-1 items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900">Administration</h1>
-            <p className="mt-2 text-sm text-gray-600">
+            <h1 className="text-2xl font-bold text-sora-gray">Administration</h1>
+            <p className="mt-2 text-sm text-gray-500">
               Connectez-vous pour accéder à l&apos;interface d&apos;administration
             </p>
           </div>
@@ -102,7 +102,7 @@ const AdminLoginPage: NextPage = () => {
                   Adresse e-mail
                 </label>
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <FiUser className="h-5 w-5 text-gray-400" />
+                  <FiUser className="h-5 w-5 text-sora-blue/70" />
                 </div>
                 <input
                   id="email-address"
@@ -110,7 +110,10 @@ const AdminLoginPage: NextPage = () => {
                   type="email"
                   autoComplete="email"
                   required
-                  className="appearance-none rounded-t-md relative block w-full px-10 py-3 border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  className="appearance-none rounded-t-md relative block w-full pl-10 py-3 
+                             border border-gray-200 bg-white text-sora-gray placeholder-gray-400
+                             focus:outline-none focus:ring-2 focus:ring-sora-blue/50 focus:border-sora-blue
+                             focus:z-10 sm:text-sm"
                   placeholder="Adresse e-mail administrateur"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -121,7 +124,7 @@ const AdminLoginPage: NextPage = () => {
                   Mot de passe
                 </label>
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <FiLock className="h-5 w-5 text-gray-400" />
+                  <FiLock className="h-5 w-5 text-sora-blue/70" />
                 </div>
                 <input
                   id="password"
@@ -129,7 +132,10 @@ const AdminLoginPage: NextPage = () => {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="appearance-none rounded-b-md relative block w-full px-10 py-3 border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  className="appearance-none rounded-b-md relative block w-full pl-10 py-3 
+                             border border-gray-200 bg-white text-sora-gray placeholder-gray-400
+                             focus:outline-none focus:ring-2 focus:ring-sora-blue/50 focus:border-sora-blue
+                             focus:z-10 sm:text-sm"
                   placeholder="Mot de passe"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -141,7 +147,10 @@ const AdminLoginPage: NextPage = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors disabled:opacity-50"
+                className="group relative w-full flex justify-center py-3 px-4 border border-transparent 
+                           text-sm font-medium rounded-md text-white bg-sora-blue hover:bg-sora-blue/90 
+                           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sora-blue
+                           transition-colors disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>
@@ -154,7 +163,7 @@ const AdminLoginPage: NextPage = () => {
           </form>
 
           <div className="text-center mt-6">
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-gray-500">
               Pour la démonstration, utilisez <br />
               <span className="font-mono bg-gray-100 px-2 py-1 rounded text-xs">admin@example.com</span> / <span className="font-mono bg-gray-100 px-2 py-1 rounded text-xs">admin123</span>
             </p>

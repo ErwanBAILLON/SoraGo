@@ -61,14 +61,14 @@ const LoginPage: NextPage = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-indigo-100">
-      <div className="absolute top-0 right-0 w-2/3 h-64 bg-indigo-600 rounded-bl-full opacity-10 transform translate-y-12"></div>
+      <div className="absolute top-0 right-0 w-2/3 h-64 bg-sora-blue rounded-bl-full opacity-10 transform translate-y-12"></div>
       
       <div className="z-10 w-full max-w-4xl p-8 flex rounded-2xl shadow-2xl bg-white overflow-hidden">
         {/* Formulaire de connexion */}
         <div className="w-full md:w-1/2 p-5">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Bienvenue chez SoraGo</h1>
-            <p className="text-gray-600">Connectez-vous pour accéder à votre espace client</p>
+            <h1 className="text-3xl font-bold text-sora-gray mb-2">Bienvenue chez SoraGo</h1>
+            <p className="text-gray-500">Connectez-vous pour accéder à votre espace client</p>
           </div>
           
           {error && (
@@ -87,7 +87,7 @@ const LoginPage: NextPage = () => {
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FiMail className="h-5 w-5 text-gray-400" />
+                <FiMail className="h-5 w-5 text-sora-blue/70" />
               </div>
               <input
                 id="email-address"
@@ -95,7 +95,10 @@ const LoginPage: NextPage = () => {
                 type="email"
                 autoComplete="email"
                 required
-                className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 text-gray-900"
+                className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-lg 
+                           bg-white text-sora-gray placeholder-gray-400
+                           focus:outline-none focus:ring-2 focus:ring-sora-blue/50 focus:border-sora-blue
+                           transition-all duration-200"
                 placeholder="Adresse e-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -104,7 +107,7 @@ const LoginPage: NextPage = () => {
 
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FiLock className="h-5 w-5 text-gray-400" />
+                <FiLock className="h-5 w-5 text-sora-blue/70" />
               </div>
               <input
                 id="password"
@@ -112,7 +115,10 @@ const LoginPage: NextPage = () => {
                 type="password"
                 autoComplete="current-password"
                 required
-                className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 text-gray-900"
+                className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-lg 
+                           bg-white text-sora-gray placeholder-gray-400
+                           focus:outline-none focus:ring-2 focus:ring-sora-blue/50 focus:border-sora-blue
+                           transition-all duration-200"
                 placeholder="Mot de passe"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -125,15 +131,24 @@ const LoginPage: NextPage = () => {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                  className="w-4 h-4 appearance-none border border-gray-300 rounded 
+                            checked:bg-sora-blue checked:border-transparent
+                            focus:outline-none focus:ring-2 focus:ring-sora-blue/50
+                            cursor-pointer"
+                  style={{
+                    backgroundImage: 'url("data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27white%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e")',
+                    backgroundSize: '100% 100%',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat'
+                  }}
                 />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
+                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-600 cursor-pointer">
                   Se souvenir de moi
                 </label>
               </div>
 
               <div className="text-sm">
-                <Link href="/auth/forgot-password" className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-200">
+                <Link href="/auth/forgot-password" className="font-medium text-sora-blue hover:text-sora-blue/80 transition-colors duration-200">
                   Mot de passe oublié ?
                 </Link>
               </div>
@@ -142,7 +157,10 @@ const LoginPage: NextPage = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium 
+                         rounded-lg text-white bg-sora-blue hover:bg-sora-blue/90 
+                         focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sora-blue 
+                         transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               {isSubmitting ? (
                 <div className="flex items-center">
@@ -156,9 +174,9 @@ const LoginPage: NextPage = () => {
             </button>
 
             <div className="mt-4 text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-500">
                 Vous n&apos;avez pas de compte ?{' '}
-                <Link href="/auth/register" className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-200">
+                <Link href="/auth/register" className="font-medium text-sora-blue hover:text-sora-blue/80 transition-colors duration-200">
                   S&apos;inscrire
                 </Link>
               </p>
@@ -166,14 +184,14 @@ const LoginPage: NextPage = () => {
           </form>
           
           <div className="mt-8 text-center">
-            <Link href="/auth/admin" className="text-xs text-gray-500 hover:text-indigo-600 transition-colors">
+            <Link href="/auth/admin" className="text-xs text-gray-400 hover:text-sora-blue transition-colors">
               Accès Administration
             </Link>
           </div>
         </div>
         
         {/* Côté illustration */}
-        <div className="hidden md:block w-1/2 bg-indigo-600 rounded-r-2xl p-8 text-white relative">
+        <div className="hidden md:block w-1/2 bg-sora-blue rounded-r-2xl p-8 text-white relative">
           <div className="absolute inset-0 opacity-20">
             <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
               <defs>
