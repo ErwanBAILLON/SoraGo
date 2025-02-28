@@ -6,10 +6,21 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
-// Middlewares
-app.use(cors());
+console.log('process.env.FRONTEND_URL:', process.env.FRONTEND_URL);
+
+// Configuration CORS plus permissive
+app.use(cors({
+  origin: process.env.FRONTEND_URL || '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true // Important si vous utilisez des cookies/sessions
+}));
+
+// Middleware pour les requêtes OPTIONS préliminaires
+app.options('*', cors());
+
 app.use(bodyParser.json());
 
 // Routes
@@ -40,6 +51,10 @@ app.use('/plan-vehicles', planVehiclesRoutes);
 app.use('/reservations', reservationsRoutes);
 app.use('/return-logs', returnLogsRoutes);
 app.use('/payments', paymentsRoutes);
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

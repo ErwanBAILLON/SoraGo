@@ -24,18 +24,18 @@ const authModel = {
       const saltRounds = 10;
       const hashedPassword = await bcrypt.hash(userData.password, saltRounds);
 
-      // Insertion de l'utilisateur avec le mot de passe haché
+      // Insertion de l'utilisateur avec le mot de passe haché et utilisation de la séquence
       const newUser = await databasePostgresql.one(
-        `INSERT INTO "user" (username, lastname, email, phone, password)
-         VALUES ($1, $2, $3, $4, $5)
+        `INSERT INTO "user" (id, username, lastname, email, phone, password)
+         VALUES (nextval('user_id_seq'), $1, $2, $3, $4, $5)
          RETURNING id, username, lastname, email, phone, is_admin, created_at`,
-        [userData.username, userData.lastname, userData.email, userData.phone || null, hashedPassword]
+        [userData.username, userData.lastname, userData.email, userData.phone ?? null, hashedPassword]
       );
       
       return newUser;
     } catch (error) {
       console.error('Erreur lors de l\'inscription:', error);
-      return null;
+      throw error; // Propager l'erreur pour mieux la gérer dans la route
     }
   },
 
