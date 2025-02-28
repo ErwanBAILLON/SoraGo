@@ -1,9 +1,9 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useAuth } from '../contexts/AuthContext';
 
 interface ProtectedRouteProps {
-  children: ReactNode;
+  children: React.ReactNode;
   adminOnly?: boolean;
 }
 
@@ -13,24 +13,27 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, adminOnly = f
 
   useEffect(() => {
     if (!isLoading) {
-      // Si l'utilisateur n'est pas connecté, rediriger vers la page de connexion
       if (!user) {
         router.push('/auth/login');
-      }
-      // Si la page est réservée aux admins et que l'utilisateur n'est pas admin, rediriger
-      else if (adminOnly && !user.is_admin) {
+      } else if (adminOnly && !user.is_admin) {
         router.push('/dashboard');
       }
     }
   }, [user, isLoading, router, adminOnly]);
 
-  // Afficher un état de chargement pendant la vérification
-  if (isLoading || !user || (adminOnly && !user.is_admin)) {
+  if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-lg">Chargement...</div>
+      <div className="flex items-center justify-center h-screen">
+        <div className="flex flex-col items-center space-y-4">
+          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-foreground">Chargement...</p>
+        </div>
       </div>
     );
+  }
+
+  if (!user || (adminOnly && !user.is_admin)) {
+    return null;
   }
 
   return <>{children}</>;

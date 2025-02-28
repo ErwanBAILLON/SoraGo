@@ -1,15 +1,12 @@
 import React from 'react';
 import { NextPage } from 'next';
 import MainLayout from '@/components/layout/MainLayout';
-
-// Import all sections using the barrel file
 import { 
   Hero, 
   Features, 
   Plans, 
   Testimonials, 
   CTA 
-  // Contact import supprimé
 } from '@/components/sections';
 
 /**
@@ -22,13 +19,13 @@ const Home: NextPage = () => {
       <Hero />
       
       {/* About Section */}
-      <section id="about" className="py-20 bg-white">
+      <section id="about" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-contrast">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-foreground">
               About SoraGo
             </h2>
-            <p className="text-center text-gray-700 text-lg leading-relaxed">
+            <p className="text-center text-muted-foreground text-lg leading-relaxed">
               SoraGo provides flexible car subscriptions for the modern world. We offer a range of plans 
               tailored to your mobility needs, whether you&apos;re a city dweller who needs occasional access 
               to a car or a frequent traveler requiring reliable transportation. Our service eliminates 
@@ -49,8 +46,6 @@ const Home: NextPage = () => {
       
       {/* Call to Action */}
       <CTA />
-      
-      {/* Section Contact supprimée */}
     </MainLayout>
   );
 };

@@ -1,13 +1,17 @@
-import { motion, HTMLMotionProps } from 'framer-motion';
-import React from 'react';
+import { motion } from 'framer-motion';
 
-type MotionDivProps = HTMLMotionProps<'div'>;
+// Export des composants motion avec les types génériques
+export const MotionDiv = motion.div;
+export const MotionSpan = motion.span;
+export const MotionButton = motion.button;
+export const MotionA = motion.a;
+export const MotionUl = motion.ul;
+export const MotionLi = motion.li;
+export const MotionNav = motion.nav;
+export const MotionHeader = motion.header;
+export const MotionFooter = motion.footer;
+export const MotionSection = motion.section;
+export const MotionMain = motion.main;
 
-export const MotionDiv: React.FC<MotionDivProps> = ({ children, ...props }) => (
-  <motion.div {...props}>{children}</motion.div>
-);
-
-// Vous pouvez ajouter d'autres éléments motion si nécessaire
-export const MotionSection: React.FC<HTMLMotionProps<'section'>> = ({ children, ...props }) => (
-  <motion.section {...props}>{children}</motion.section>
-);
+// Re-export de la motion API pour un accès facile
+export { motion };

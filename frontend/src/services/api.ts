@@ -1,72 +1,53 @@
+import axios from 'axios';
+
 /**
  * Base API configuration for the application
  * This will be expanded when integrating with a real backend
  */
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.sorago.com';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
-type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
-
-interface FetchOptions {
-  method?: RequestMethod;
-  headers?: Record<string, string>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  body?: any;
-}
-
-/**
- * Generic API client for making HTTP requests
- */
-export const apiClient = async <T>(
-  endpoint: string, 
-  options: FetchOptions = {}
-): Promise<T> => {
-  const { 
-    method = 'GET', 
-    headers = {}, 
-    body 
-  } = options;
-
-  // Prepare headers with default content type
-  const requestHeaders: HeadersInit = {
+// Création d'une instance axios avec configuration de base
+const api = axios.create({
+  baseURL: API_URL,
+  headers: {
     'Content-Type': 'application/json',
-    ...headers,
-  };
+  },
+});
 
-  // Build request options
-  const requestOptions: RequestInit = {
-    method,
-    headers: requestHeaders,
-    credentials: 'include', // For handling authentication cookies
-  };
-
-  // Add body for non-GET requests
-  if (body && method !== 'GET') {
-    requestOptions.body = JSON.stringify(body);
-  }
-
-  try {
-    const response = await fetch(`${API_URL}${endpoint}`, requestOptions);
-    
-    // Handle non-2xx responses
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => null);
-      throw {
-        status: response.status,
-        statusText: response.statusText,
-        data: errorData,
-      };
+// Intercepteur pour ajouter le token d'authentification aux requêtes
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('auth_token');
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
     }
-    
-    // Return parsed JSON or empty object if no content
-    if (response.status === 204) {
-      return {} as T;
-    }
-    
-    const data = await response.json();
-    return data as T;
-  } catch (error) {
-    console.error('API request failed:', error);
-    throw error;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
   }
-};
+);
+
+// Intercepteur pour gérer les réponses (y compris le rafraîchissement du token)
+api.interceptors.response.use(
+  (response) => {
+    // Vérifier si un nouveau token est présent dans l'en-tête de la réponse
+    const newToken = response.headers['x-new-token'];
+    if (newToken) {
+      localStorage.setItem('auth_token', newToken);
+    }
+    return response;
+  },
+  (error) => {
+    // Gérer les erreurs (comme le token expiré)
+    if (error.response && error.response.status === 401) {
+      // Si le token est expiré ou invalide, on peut déconnecter l'utilisateur
+      localStorage.removeItem('auth_token');
+      window.location.href = '/auth/login';
+    }
+    return Promise.reject(error);
+  }
+);
+
+export default api;

@@ -22,24 +22,22 @@ export const Header: React.FC<HeaderProps> = ({ transparent = true }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [transparent]);
 
-  // Mise à jour des éléments de navigation avec lien vers la page contact
+  // Mise à jour des éléments de navigation
   const navItems = [
-    { name: 'About', href: '/#about' },
-    { name: 'Features', href: '/#features' },
+    { name: 'Sign up', href: '/auth/login' },
     { name: 'Plans', href: '/#plans' },
-    { name: 'Testimonials', href: '/#testimonials' },
-    { name: 'Contact', href: '/contact' },  // Lien modifié pour rediriger vers la page contact
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white text-contrast shadow-md' : 'bg-transparent text-white'
+      scrolled ? 'bg-background text-foreground shadow-md' : 'bg-transparent text-primary-foreground'
     }`}>
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo/brand name that links to home */}
         <Link href="/" className="flex items-center">
           <h1 className={`text-2xl font-bold transition-colors duration-300 ${
-            scrolled ? 'text-primary' : 'text-white'
+            scrolled ? 'text-primary' : 'text-primary-foreground'
           }`}>
             SoraGo
           </h1>
@@ -63,7 +61,7 @@ export const Header: React.FC<HeaderProps> = ({ transparent = true }) => {
               key={item.name} 
               href={item.href}
               className={`text-sm uppercase tracking-wide font-medium hover:text-accent transition-colors ${
-                scrolled ? 'text-contrast' : 'text-white'
+                scrolled ? 'text-foreground' : 'text-primary-foreground'
               }`}
             >
               {item.name}
@@ -74,13 +72,13 @@ export const Header: React.FC<HeaderProps> = ({ transparent = true }) => {
       
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <nav className="md:hidden bg-white py-4 px-6 shadow-lg">
+        <nav className="md:hidden bg-background py-4 px-6 shadow-lg">
           {navItems.map((item) => (
             <Link 
               key={item.name}
               href={item.href}
               onClick={() => setIsMenuOpen(false)}
-              className="block py-2 text-contrast hover:text-accent transition-colors"
+              className="block py-2 text-foreground hover:text-accent transition-colors"
             >
               {item.name}
             </Link>
