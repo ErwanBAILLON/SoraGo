@@ -1,10 +1,12 @@
-import '@/styles/globals.css';
-import type { AppProps } from 'next/app';
+import React from 'react';
+import { AppProps } from 'next/app';
+import { AuthProvider } from '../contexts/AuthContext';
+import '../styles/globals.css';
 import Head from 'next/head';
 
-export default function App({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <AuthProvider>
       <Head>
         <title>SoraGo - Flexible Car Subscriptions</title>
         <meta name="description" content="SoraGo offers flexible car subscription plans tailored to your lifestyle needs" />
@@ -12,6 +14,8 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Component {...pageProps} />
-    </>
+    </AuthProvider>
   );
 }
+
+export default MyApp;
