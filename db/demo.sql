@@ -7,7 +7,7 @@ CREATE TYPE payment_status AS ENUM ('pending', 'completed', 'failed', 'refunded'
 
 -- Table location
 CREATE TABLE location (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     city VARCHAR NOT NULL,
     address VARCHAR NOT NULL,
     country VARCHAR NOT NULL
@@ -15,7 +15,7 @@ CREATE TABLE location (
 
 -- Table user
 CREATE TABLE "user" (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     username VARCHAR NOT NULL,
     lastname VARCHAR NOT NULL,
     email VARCHAR NOT NULL UNIQUE,
@@ -27,13 +27,13 @@ CREATE TABLE "user" (
 
 -- Table brand
 CREATE TABLE brand (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name VARCHAR NOT NULL UNIQUE
 );
 
 -- Table specification
 CREATE TABLE specification (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     weight INT NOT NULL,
     length INT NOT NULL,
     width INT NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE specification (
 
 -- Table vehicle
 CREATE TABLE vehicle (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     type vehicle_type NOT NULL,
     brand_id INT REFERENCES brand(id),
     model VARCHAR NOT NULL,
@@ -55,21 +55,21 @@ CREATE TABLE vehicle (
 
 -- Table parking
 CREATE TABLE parking (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     vehicle_id INT REFERENCES vehicle(id),
     location_id INT REFERENCES location(id)
 );
 
 -- Table subscription_plan
 CREATE TABLE subscription_plan (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name VARCHAR NOT NULL,
     price INT NOT NULL
 );
 
 -- Table subscription
 CREATE TABLE subscription (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     user_id INT REFERENCES "user"(id),
     plan_id INT REFERENCES subscription_plan(id),
     start_date TIMESTAMP DEFAULT now(),
@@ -79,7 +79,7 @@ CREATE TABLE subscription (
 
 -- Table plan_vehicle
 CREATE TABLE plan_vehicle (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     plan_id INT REFERENCES subscription_plan(id),
     vehicle_type vehicle_type NOT NULL,
     category car_category
@@ -87,7 +87,7 @@ CREATE TABLE plan_vehicle (
 
 -- Table reservation
 CREATE TABLE reservation (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     user_id INT REFERENCES "user"(id),
     vehicle_id INT REFERENCES vehicle(id),
     start_date TIMESTAMP DEFAULT now(),
@@ -99,7 +99,7 @@ CREATE TABLE reservation (
 
 -- Table return_log
 CREATE TABLE return_log (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     reservation_id INT REFERENCES reservation(id),
     return_date TIMESTAMP DEFAULT now(),
     location_id INT REFERENCES location(id),
@@ -109,7 +109,7 @@ CREATE TABLE return_log (
 
 -- Table payment
 CREATE TABLE payment (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     user_id INT REFERENCES "user"(id),
     amount DECIMAL(10,2) NOT NULL,
     method payment_method NOT NULL,
