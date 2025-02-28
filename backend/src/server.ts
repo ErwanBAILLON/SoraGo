@@ -8,8 +8,6 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-console.log('process.env.FRONTEND_URL:', process.env.FRONTEND_URL);
-
 // Configuration CORS plus permissive
 app.use(cors({
   origin: process.env.FRONTEND_URL || '*',
